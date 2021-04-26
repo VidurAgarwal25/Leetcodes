@@ -1,10 +1,21 @@
 class Solution {
 public:
     bool checkIfExist(vector<int>& arr) {
-        for(int i=0;i<arr.size()-1;i++){
-            for(int j=i+1;j<arr.size();j++){
-                if(arr[i]==arr[j]*2||arr[j]==arr[i]*2)
-                    return true;
+        unordered_map<int,int>m;
+        int x=0;
+        for(int i=0;i<arr.size();i++){
+            m[2*arr[i]]=arr[i];
+            if(arr[i]==0)
+                x++;
+        }
+        if(x>=2)
+            return true;
+        else{
+            
+        for(int i=0;i<arr.size();i++){
+            
+            if(m[arr[i]])
+                return true;
             }
         }
         return false;
