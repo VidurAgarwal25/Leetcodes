@@ -18,6 +18,7 @@ public:
                     result.push_back(output);
                     previous1=nums[i];
                     previous2=nums[j];
+                    
                     while(i<j&&nums[i]==previous1)
                     i++;
                     while(i<j&&nums[j]==previous2)
