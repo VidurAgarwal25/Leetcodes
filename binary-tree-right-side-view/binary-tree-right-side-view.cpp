@@ -12,7 +12,7 @@
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
-        vector<int> res;
+        vector<int> res;int f;
         queue<TreeNode*>q;
         if(root!=NULL)
         {
@@ -31,17 +31,17 @@ public:
                 q.pop();
             }
             q=temp;
-            int c;
+            int c;f=0;
             while(!temp.empty()){
                 r=temp.front();
                 c=r->val;
-                cout<<c<<" ";
                 temp.pop();
+                f=1;
             }
+            if(f==1)
             res.push_back(c);
         }
-        if(res.size()!=0)
-            res.pop_back();
+       
         return res;
     }
 };
