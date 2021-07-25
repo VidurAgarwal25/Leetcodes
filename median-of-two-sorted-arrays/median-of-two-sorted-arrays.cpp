@@ -1,33 +1,39 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        vector<int>res;double med;
-        int i=0,j=0;
-        int l1=nums1.size();
-        int l2=nums2.size();
-        while(i<l1&&j<l2){
-            if(nums1[i]<nums2[j]){
-                res.push_back(nums1[i]);
+        int n=nums1.size(),m=nums2.size();
+        int i=0,j=0,x;double med;
+        while(i<n&&j<m){
+            if(nums1[i]<=nums2[j]){
                 i++;
             }
             else{
-                res.push_back(nums2[j]);
-                j++;
+                x=nums1[i];
+                nums1[i]=nums2[j];
+                nums2[j]=x;
+                sort(nums2.begin(),nums2.end());
             }
         }
-        if((l1-i)>0){
-            for(int k=i;k<l1;k++)
-                res.push_back(nums1[k]);
+        int len=n+m;
+        if(len%2==1){
+            if(len/2<n)
+                med=nums1[len/2];
+            else{
+                med=nums2[len/2-n];
+            }
         }
-        
-        if((l2-j)>0){
-            for(int k=j;k<l2;k++)
-                res.push_back(nums2[k]);
+        else{
+            x=len/2;
+            if(x<n){
+                med=(nums1[x]+nums1[x-1])/2.0;
+            }
+            else{
+                if((x-n)==0)
+                    med=(nums2[0]+nums1[n-1])/2.0;
+                else
+                    med=(nums2[x-n]+nums2[x-n-1])/2.0;
+            }
         }
-        if((l1+l2)%2==0)
-            med=(res[(l1+l2)/2]+res[(l1+l2)/2-1])/2.0;
-        else
-            med=res[(l1+l2)/2];
         return med;
     }
 };
