@@ -3,8 +3,8 @@ public:
     int longestPalindromeSubseq(string a) {
         string b=a;
         reverse(b.begin(),b.end());
-        int dp[1001][1001];
         int n=a.length();
+        int dp[n+1][n+1];
         for(int i=0;i<=n;i++){
             for(int j=0;j<=n;j++){
                 if(i==0||j==0)
