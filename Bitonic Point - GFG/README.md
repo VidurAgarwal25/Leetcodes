@@ -1,5 +1,5 @@
 # Bitonic Point
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an array <strong>arr</strong> of <strong>n</strong> elements which is first increasing and then may be decreasing,&nbsp;find the maximum element in the array.<br>
 <strong>Note: </strong>If the array is increasing then just print then <strong>last element</strong> will be the maximum value.</span></p>
