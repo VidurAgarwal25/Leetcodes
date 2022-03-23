@@ -23,6 +23,8 @@ public:
 	   int l=0,h=n-1,mid;
 	   while(l<=h){
 	       mid=(l+h)/2;
+	       if(mid-1<0||mid+1>=n)
+	       break;
 	       if(arr[mid]>arr[mid-1]&&arr[mid]>arr[mid+1])
 	       return arr[mid];
 	       if(arr[mid]>arr[mid+1]&&arr[mid]<arr[mid-1])
