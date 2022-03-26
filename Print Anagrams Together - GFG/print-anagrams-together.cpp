@@ -12,16 +12,13 @@ class Solution{
   public:
     vector<vector<string> > Anagrams(vector<string>& s) {
         //code here
-        map<map<char,int>,vector<string>>m;
+        map<string,vector<string>>m;
         string a;
         for(int i=0;i<s.size();i++){
-            map<char,int>ma;
+            
             a=s[i];
-            for(int j=0;j<a.length();j++){
-                char ch=a[j];
-                ma[ch]++;
-            }
-            m[ma].push_back(a);
+            sort(a.begin(),a.end());
+            m[a].push_back(s[i]);
         }
         vector<vector<string>>res;
         for(auto i:m){
