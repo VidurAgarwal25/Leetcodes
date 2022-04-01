@@ -1,29 +1,6 @@
 class Solution {
 public:
-    bool f(string s,string p,int n,int m,vector<vector<int>>&dp){
-        if(m==0&&n==0)
-            return true;
-        if(m>0&&n==0){
-            for(int i=1;i<=m;i++){
-                if(p[i-1]!='*')
-                    return false;
-            }
-            return true;
-        }
-        if(m==0&&n>0)
-            return false;
-        if(dp[m][n]!=-1)
-            return dp[m][n];
-        if(s[n-1]==p[m-1]||p[m-1]=='?')
-            return dp[m][n]=f(s,p,n-1,m-1,dp);
-        if(p[m-1]=='*'){
-            return dp[m][n]=f(s,p,n,m-1,dp)||f(s,p,n-1,m,dp);
-        }
-        if(p[m-1]!=s[n-1])
-        return dp[m][n]=false;
-        
-        return dp[m][n]=true;
-    }
+    
     bool isMatch(string s, string p) {
         int n=s.length();
         int m=p.length();
