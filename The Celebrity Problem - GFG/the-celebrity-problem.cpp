@@ -14,21 +14,30 @@ class Solution
     int celebrity(vector<vector<int> >& m, int n) 
     {
         // code here 
-        vector<int>out(n,0),in(n,0);
+        stack<int>s;
         for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                if(m[i][j]==1)
-                {
-                    out[i]++;
-                    in[j]++;
-                }
+            s.push(i);
+        }
+        while(s.size()>1){
+            int a=s.top();
+            s.pop();
+            int b=s.top();
+            s.pop();
+            if(m[a][b]==1){
+                s.push(b);
+            }
+            else{
+                s.push(a);
             }
         }
+        int pos=s.top();
+        s.pop();
         for(int i=0;i<n;i++){
-            if(out[i]==0&&in[i]==n-1)
-            return i;
+            if(i!=pos)
+            if(m[pos][i]==1||m[i][pos]==0)
+            return -1;
         }
-        return -1;
+        return pos;
     }
 };
 
