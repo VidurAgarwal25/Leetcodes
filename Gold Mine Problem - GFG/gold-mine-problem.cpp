@@ -9,23 +9,45 @@ using namespace std;
 
 class Solution{
 public:
-int f(vector<vector<int>> &a,int n,int m,int r,int c,vector<vector<int>> &dp){
-    if(r<0||r==n||c==m)
-    return 0;
-    if(dp[r][c]!=-1)
-    return dp[r][c];
-    int ud=f(a,n,m,r-1,c+1,dp);
-    int ri=f(a,n,m,r,c+1,dp);
-    int ld=f(a,n,m,r+1,c+1,dp);
-    return dp[r][c]=a[r][c]+max(max(ld,ri),ud);
-}
     int maxGold(int n, int m, vector<vector<int>> a)
     {
         // code here
         int res=0;
-        vector<vector<int>>dp(n,vector<int>(m,-1));
+        if(n==1){
+            for(int i=0;i<m;i++){
+                
+                res+=a[0][i];
+            }
+            return res;
+        }
+        if(m==1){
+            for(int i=0;i<n;i++){
+                if(a[i][0]>res)
+                res=a[i][0];
+            }
+            return res;
+        }
+        vector<vector<int>>dp(n,vector<int>(m));
+        for(int j=m-1;j>=0;j--){
+            for(int i=n-1;i>=0;i--){
+                if(j==m-1){
+                    dp[i][j]=a[i][j];
+                }
+                else if(i==n-1){
+                    dp[i][j]=a[i][j]+max(dp[i-1][j+1],dp[i][j+1]);
+                }
+                else if(i==0){
+                    dp[i][j]=a[i][j]+max(dp[i][j+1],dp[i+1][j+1]);
+                }
+                else{
+                    dp[i][j]=a[i][j]+max(max(dp[i][j+1],dp[i+1][j+1]),dp[i-1][j+1]);
+                }
+            }
+        }
+        
         for(int i=0;i<n;i++){
-            res=max(res,f(a,n,m,i,0,dp));
+            if(dp[i][0]>res)
+            res=dp[i][0];
         }
         return res;
     }
