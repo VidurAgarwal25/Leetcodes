@@ -97,23 +97,43 @@ struct Node {
 class Solution
 {
     public:
-    void f(Node* r,vector<int>&a){
-        if(r==NULL)
-        return ;
-        f(r->left,a);
-        a.push_back(r->data);
-        f(r->right,a);
-    }
     int kthLargest(Node *r, int k)
     {
         //Your code here
-        int res;
         if(r==NULL)
         return -1;
-        vector<int>a;
-        f(r,a);
-        res=a[a.size()-k];
-        return res;
+        Node* cur=r;
+        Node* succ;
+        int c=0;
+        int l;
+        while(cur!=NULL){
+            if(cur->right==NULL){
+                c++;
+                if(c==k)
+                l=cur->data;
+                cur=cur->left;
+            }
+            else{
+                succ=cur->right;
+                while(succ->left!=NULL&&succ->left!=cur){
+                    succ=succ->left;
+                }
+                if(succ->left==NULL){
+                    succ->left=cur;
+                    cur=cur->right;
+                }
+                else{
+                    succ->left=NULL;
+                    c++;
+                    if(c==k)
+                    l=cur->data;
+                    cur=cur->left;
+                }
+            }
+        }
+        if(c<k)
+        return -1;
+        return l;
     }
 };
 
