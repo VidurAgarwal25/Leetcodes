@@ -97,25 +97,21 @@ struct Node {
 class Solution
 {
     public:
+    void f(Node* r,vector<int>&a){
+        if(r==NULL)
+        return ;
+        f(r->left,a);
+        a.push_back(r->data);
+        f(r->right,a);
+    }
     int kthLargest(Node *r, int k)
     {
         //Your code here
         int res;
         if(r==NULL)
         return -1;
-        queue<Node*>q;
-        q.push(r);
         vector<int>a;
-        while(!q.empty()){
-            Node* t=q.front();
-            q.pop();
-            if(t->left!=NULL)
-            q.push(t->left);
-            if(t->right!=NULL)
-            q.push(t->right);
-            a.push_back(t->data);
-        }
-        sort(a.begin(),a.end());
+        f(r,a);
         res=a[a.size()-k];
         return res;
     }
