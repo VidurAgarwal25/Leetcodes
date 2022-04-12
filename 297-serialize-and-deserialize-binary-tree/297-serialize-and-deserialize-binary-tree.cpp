@@ -29,7 +29,7 @@ public:
                 q.push(t->right);
             }
         }
-        cout<<s;
+        
         return s;
     }
 
