@@ -38,10 +38,6 @@ public:
             return (mah.top()+mih.top())/2.0;
         }
         else{
-            if(l==1&&s==0)
-                return mah.top();
-            if(s==1&&l==0)
-                return mih.top();
             if(l>s)
                 return mah.top();
             else
