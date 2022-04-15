@@ -27,7 +27,7 @@ public:
             dq.pop_back();
         }
         dq.push_front(key);
-        m.insert({key, {value,dq.begin()}});
+        m[key]={value,dq.begin()};
     }
         
     void use(unordered_map<int,pair<int,list<int>::iterator>>::iterator& it){
