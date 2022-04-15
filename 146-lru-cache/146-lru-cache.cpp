@@ -8,32 +8,40 @@ public:
     }
     
     int get(int key) {
-        auto i=m.find(key);
-        if(i==m.end())
+        if(m.find(key)==m.end())
             return -1;
-        use(i);
-        return i->second.first;
+        dq.erase(m[key].second);
+        dq.push_front(key);
+        m[key]={m[key].first,dq.begin()};
+        return m[key].first;
     }
     
     void put(int key, int value) {
-        auto i=m.find(key);
-        if(i!=m.end()){
-            use(i);
-            m[key]={value,dq.begin()};
-            return;
+        if(dq.size()==c){
+            if(m.find(key)==m.end()){
+                int x=dq.back();
+                m.erase(x);
+                dq.pop_back();
+                dq.push_front(key);
+                m[key]={value,dq.begin()};
+            }
+            else{
+                dq.erase(m[key].second);
+                dq.push_front(key);
+                m[key]={value,dq.begin()};
+            }
         }
-        if(m.size()==c){
-            m.erase(dq.back());
-            dq.pop_back();
+        else{
+            if(m.find(key)==m.end()){
+                dq.push_front(key);
+                m[key]={value,dq.begin()};
+            }
+            else{
+                dq.erase(m[key].second);
+                dq.push_front(key);
+                m[key]={value,dq.begin()};
+            }
         }
-        dq.push_front(key);
-        m[key]={value,dq.begin()};
-    }
-        
-    void use(unordered_map<int,pair<int,list<int>::iterator>>::iterator& it){
-        dq.erase(it->second.second);
-        dq.push_front(it->first);
-        it->second.second=dq.begin();
     }
 };
 
