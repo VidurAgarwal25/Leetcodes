@@ -17,32 +17,20 @@ public:
     }
     
     void put(int key, int value) {
+        if(m.find(key)!=m.end()){
+            dq.erase(m[key].second);
+            dq.push_front(key);
+            m[key]={value,dq.begin()};
+            return;
+        }
+        
         if(dq.size()==c){
-            if(m.find(key)==m.end()){
-                int x=dq.back();
-                m.erase(x);
-                dq.pop_back();
-                dq.push_front(key);
-                m[key]={value,dq.begin()};
-            }
-            else{
-                dq.erase(m[key].second);
-                dq.push_front(key);
-                m[key]={value,dq.begin()};
-            }
+           m.erase(dq.back());
+           dq.pop_back();
         }
-        else{
-            if(m.find(key)==m.end()){
-                dq.push_front(key);
-                m[key]={value,dq.begin()};
-            }
-            else{
-                dq.erase(m[key].second);
-                dq.push_front(key);
-                m[key]={value,dq.begin()};
-            }
+        dq.push_front(key);
+        m[key]={value,dq.begin()}; 
         }
-    }
 };
 
 /**
