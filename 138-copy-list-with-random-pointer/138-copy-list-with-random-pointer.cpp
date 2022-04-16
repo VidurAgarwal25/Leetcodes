@@ -32,11 +32,7 @@ public:
             p=p->next;
             h=h->next;
         }
-        // Node* x=r;
-        // while(x!=NULL){
-        //     cout<<x->data<<" vidur ";
-        //     x=x->next;
-        // }
+
         p=r;
         
         Node* x=ori;
