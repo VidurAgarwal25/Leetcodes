@@ -26,29 +26,42 @@ class Solution
         //Write your code here
         if(h==NULL)
         return NULL;
-        unordered_map<Node*,Node*>m;
-        Node* ori=h;
-        Node* t=new Node(h->data);
-        m[h]=t;
-        Node *p=t;
-        Node *r=p;
+        Node* t;
+        t=new Node(h->data);
+        Node* p=t;
+        Node* r=p;
+        Node* orig=h;
+        Node* prev=h;
         h=h->next;
+        prev->next=t;
         while(h!=NULL){
+            p->next=h;
+            prev=h;
             t=new Node(h->data);
-            m[h]=t;
-            p->next=t;
-            p=p->next;
             h=h->next;
+            prev->next=t;
+            p=t;
         }
-        p=r;
-        while(ori!=NULL){
-            if(ori->arb==NULL)
-            p->arb=NULL;
+        Node* orig1=orig;
+        //cout<<r->data<<" vidur "<<r->next->data<<" vidur "<<r->next->next->data<<" vidur "<<r->next->next->next->data<<" vidur ";
+        while(orig!=NULL){
+            if(orig->arb==NULL)
+                orig->next->arb=NULL;
             else
-            p->arb=m[ori->arb];
-            p=p->next;
-            ori=ori->next;
+                orig->next->arb=orig->arb->next;
+            orig=orig->next->next;
         }
+        
+        p=r;
+        while(orig1!=NULL){
+            orig1->next=p->next;
+            orig1=orig1->next;
+            if(orig1==NULL)
+            break;
+            p->next=orig1->next;
+            p=p->next;
+        }
+        
         return r;
     }
 
