@@ -25,43 +25,27 @@ class Solution
     {
         //Write your code here
         if(h==NULL)
-        return h;
-        Node *ori=h;
-        Node*t=new Node(h->data);
-        Node* p=t;
-        Node* r=p;
+        return NULL;
+        unordered_map<Node*,Node*>m;
+        Node* ori=h;
+        Node* t=new Node(h->data);
+        m[h]=t;
+        Node *p=t;
+        Node *r=p;
         h=h->next;
-        
-        
         while(h!=NULL){
             t=new Node(h->data);
+            m[h]=t;
             p->next=t;
             p=p->next;
             h=h->next;
         }
-        // Node* x=r;
-        // while(x!=NULL){
-        //     cout<<x->data<<" vidur ";
-        //     x=x->next;
-        // }
         p=r;
-        
-        Node* x=ori;
         while(ori!=NULL){
-            Node* f=r;
-            t=ori->arb;
-            if(t==NULL){
-                p->arb=NULL;
-                p=p->next;
-                ori=ori->next;
-                continue;
-            }
-            Node* q=x;
-            while(q!=t){
-                q=q->next;
-                f=f->next;
-            }
-            p->arb=f;
+            if(ori->arb==NULL)
+            p->arb=NULL;
+            else
+            p->arb=m[ori->arb];
             p=p->next;
             ori=ori->next;
         }
