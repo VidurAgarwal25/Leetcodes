@@ -14,13 +14,16 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Array
 |  |
 | ------- |
+| [0822-unique-morse-code-words](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0822-unique-morse-code-words) |
 | [0965-unique-email-addresses](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0965-unique-email-addresses) |
 ## Hash Table
 |  |
 | ------- |
+| [0822-unique-morse-code-words](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0822-unique-morse-code-words) |
 | [0965-unique-email-addresses](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0965-unique-email-addresses) |
 ## String
 |  |
 | ------- |
+| [0822-unique-morse-code-words](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0822-unique-morse-code-words) |
 | [0965-unique-email-addresses](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0965-unique-email-addresses) |
 <!---LeetCode Topics End-->
