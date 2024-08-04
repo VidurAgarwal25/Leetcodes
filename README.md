@@ -15,6 +15,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0822-unique-morse-code-words](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0822-unique-morse-code-words) |
+| [0824-number-of-lines-to-write-string](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0824-number-of-lines-to-write-string) |
 | [0965-unique-email-addresses](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0965-unique-email-addresses) |
 ## Hash Table
 |  |
@@ -25,5 +26,6 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0822-unique-morse-code-words](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0822-unique-morse-code-words) |
+| [0824-number-of-lines-to-write-string](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0824-number-of-lines-to-write-string) |
 | [0965-unique-email-addresses](https://github.com/VidurAgarwal25/Leetcodes/tree/master/0965-unique-email-addresses) |
 <!---LeetCode Topics End-->
