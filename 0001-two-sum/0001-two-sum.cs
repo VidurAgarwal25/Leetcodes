@@ -1,6 +1,6 @@
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
-        Dictionary<int, int> indexing = new Dictionary<int, int>(nums.Length); // Initialize with capacity
+        Dictionary<int, int> indexing = new Dictionary<int, int>(nums.Length); 
         
         for (int i = 0; i < nums.Length; i++) {
             int check = target - nums[i];
@@ -9,12 +9,9 @@ public class Solution {
                 return new int[] { index, i };
             }
             
-            // Only add to the dictionary if the key does not exist
-            if (!indexing.ContainsKey(nums[i])) {
-                indexing[nums[i]] = i;
-            }
+            indexing[nums[i]] = i;  // Update even if key exists (trusting no duplicates)
         }
         
-        return null; // In case no solution is found    
+        return null;    
     }
 }
